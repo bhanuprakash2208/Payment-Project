@@ -1,0 +1,28 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title> Account Summary</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Account No.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">CUR</th>
+                    <th scope="col">Clear Balance</th>
+                    <th scope="col">Over Draft</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-secondary">
+                    <td>{{ customer.customerid }}</td>
+                    <td>{{ customer.accountholdername }}</td>
+                    <td>INR</td>
+                    <td>{{ customer.clearbalance }} </td>
+                    <td>{{ overdraft }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </mat-card-content>
+</mat-card>

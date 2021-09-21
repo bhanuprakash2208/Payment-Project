@@ -1,0 +1,179 @@
+
+Working
+<nav class="navbar navbar-dark" style="background-color: #B37E97;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Navbar</span>
+</nav>
+<hr>
+<p>
+    <mat-toolbar color="primary">
+        <span>My Application</span>
+    </mat-toolbar>
+</p>
+<hr>
+<p>
+    
+</p>
+
+<hr>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3" fgid="176510">
+    <div class="container-fluid" fgid="176516">
+        <a class="navbar-brand" href="#" fgid="176522">HDFC</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item" *ngFor="let item of navitems">
+                    <a class="nav-link" [routerLink]="item.link" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact:true}">{{item.text}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<hr>
+<mat-toolbar color="primary" class="mat-elevation-z8">
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">person_outline</mat-icon>
+    <mat-icon class="mat-icon-rtl-mirror" svgIcon="thumb-up"></mat-icon>
+    <div *ngFor="let item of navitems">
+        <a mat-button [routerLink]="item.link" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}">{{item.text}}
+        </a>
+    </div>
+    <!-- <div>
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item" *ngFor="let item of navitems">
+                <a class="nav-link" [routerLink]="item.link" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}">{{item.text}}
+                </a>
+            </li>
+        </ul>
+    </div> -->
+</mat-toolbar>
+<hr>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item" *ngFor="let item of navitems">
+                <a class="nav-link" [routerLink]="item.link" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}">{{item.text}}
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<mat-icon aria-hidden="false" aria-label="Example home icon">person_outline</mat-icon>
+
+<mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
+
+
+
+
+<hr>
+<nav class="navbar navbar-expand-lg py-1 navbar-dark bg-primary">
+    <div class="container-fluid">
+  
+      <a class="navbar-brand" href="#"><img src="assets/img/HDFC-logo.png" alt="HDFC Bank" width="300" height="50"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  
+          <li class="nav-item" *ngFor="let item of navitems">
+            <a class="nav-link" [routerLink]="item.link" routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact:true}">{{item.text}}
+            </a>
+  
+          </li>
+          <a href="#">
+            <mat-icon class="icon">person</mat-icon>
+            <span class="label"> Bhanu</span>
+          </a>
+          <a>
+            <mat-icon class="icon">input</mat-icon>
+            <span class="label">Login</span>
+          </a>
+  
+        </ul>
+  
+      </div>
+    </div>
+  </nav>
+  <hr>
+  <mat-toolbar fxLayout="row" color="primary" class="mat-elevation-z8">
+    <img src="assets/img/HDFC-logo.png" alt="HDFC Bank" width="300" height="50">
+    <span fxFlex></span>
+    <div *ngFor="let item of navitems">
+      <a class="nav-link" [routerLink]="item.link">{{item.text}}
+      </a>
+    </div>
+    <span class="example-spacer"></span>
+    <a href="#">
+      <mat-icon class="icon">person</mat-icon>
+      <span class="label"> User Name is Bhanu</span>
+    </a>
+    <a>
+      <mat-icon class="icon">input</mat-icon>
+      <span class="label">Login</span>
+    </a>
+  
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+  <hr>
+  <mat-toolbar fxLayout="row" color="primary" class="mat-elevation-z8">
+    <img src="assets/img/hd logo.png" alt="HDFC Bank" width="50" height="50">
+    <a class="nav-link"><span fxFlex>HDFC BANK</span></a>
+    <!-- <div *ngFor="let item of navitems">
+      <a class="nav-link" [routerLink]="item.link">{{item.text}}
+      </a>
+    </div> -->
+    <span class="example-spacer"></span>
+    <a href="#">
+      <mat-icon class="icon">person</mat-icon>
+      <span class="label"> Bhanu</span>
+    </a>
+    <a>
+      <mat-icon class="icon">input</mat-icon>
+      <span class="label">Login</span>
+    </a>
+  
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+  <hr>
+  
+  <hr>
+
+
+  <button type=button class="btn btn-primary"  (click)="clickMethod('name')">Delete me</button>

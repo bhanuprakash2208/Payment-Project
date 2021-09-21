@@ -1,0 +1,280 @@
+<mat-horizontal-stepper linear>
+  <mat-step label="Receiver Details" completed=true>
+
+    <div class="row top-buffer">
+
+      <div class="col-md-4">
+        <div>Receiver Acc Number</div>
+        <mat-form-field floatLabel="auto" appearance="outline">
+          <mat-label> Account No</mat-label>
+          <input type="number" matInput required id="recipientid" name="recipientid" autocomplete="off"
+            [(ngModel)]="transaction.receiveraccountholdernumber">
+          <mat-hint align="end">Only Numbers</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <div>Receiver Name</div>
+        <mat-form-field floatLabel="auto" appearance="outline">
+          <mat-label>Receiver Name</mat-label>
+          <input type="text" matInput required id="recipientsname" name="recipientsname" autocomplete="off"
+            [(ngModel)]="transaction.receiveraccountholdername" (blur) = "searchNameInSDN()">
+          <!-- <mat-hint align="end">Only Numbers</mat-hint> -->
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <div>Amount</div>
+        <mat-form-field floatLabel="auto" appearance="outline">
+          <mat-label>Amount</mat-label>
+          <input type="number" matInput required id="currencyamount" name="currencyamount" autocomplete="off"
+            [(ngModel)]="transaction.inramount">
+          <mat-hint align="end">Only Numbers</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row top-buffer">
+
+      <div class="col-md-4">
+        <div>Receiver Bank BIC</div>
+        <mat-form-field floatLabel="auto" appearance="outline">
+          <mat-label>Bank BIC</mat-label>
+          <input type="text" matInput required id="receiverbic" name="receiverbic" autocomplete="off"
+            [(ngModel)]="this.transaction.receiverBIC.bic" (blur)="fecthBankBIC()">
+          <!-- <mat-hint align="end">Only Numbers</mat-hint> -->
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <div>Institution Name</div>
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>Bank Name</mat-label>
+          <input type="text" matInput required disabled id="institutionname" name="institutionname" autocomplete="off"
+            [(ngModel)]="this.transaction.receiverBIC.bankname" readonly>
+          <!-- <mat-hint align="end">Only Numbers</mat-hint> -->
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <div>Transfer Fees :</div>
+        <div class=" top-buffer">
+          {{transaction.inramount*0.0025 | number:'1.0-2'}}
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-5">
+        <div>Transfer Types</div>
+        <mat-form-field appearance="outline" class="col-md-8">
+          <mat-label>Transfer Type</mat-label>
+          <mat-select required id="transfertype" name="transfertype" [(ngModel)]="transaction.transfertypecode">
+            <mat-option *ngFor="let t of transfertypes" [value]="t">{{t.transfertypedescription}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-7">
+        <div>Message</div>
+        <mat-form-field appearance="outline" class="col-md-8">
+          <mat-label>Message</mat-label>
+          <mat-select required id="messagecodes" name="messagecodes" [(ngModel)]="transaction.messagecode">
+            <mat-option *ngFor="let m of messagecodes" [value]="m">{{m.instruction}} </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    {{selectedValue}}
+    <div class="text-center">
+      <button mat-raised-button matStepperNext color="primary">Next</button>
+    </div>
+    {{transaction | json}}
+  </mat-step>
+  <mat-step label="Confirm Details" completed="true">
+
+     <!-- <div style=" margin-left: 35%; margin-right:35%;">
+        <div class="card border-info mb-3" style="max-width: 50rem;" >
+            <div class="card-header fs-4 text-center">Transaction</div>
+            <div class="card-body">
+              </div>
+              </div>
+              </div> -->
+    <div>
+      <div class="card border border-primary" style="margin-left:12%; margin-right:12%;">
+        <h5 class="card-header text-center fs-3">Please Confirm the Details</h5>
+        <div class="card-body">
+
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col">
+                <h2><span> Sender Details</span></h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">Account Number</div>
+              <div class="col">: {{customer.customerid}}</div>
+            </div>
+            <div class="row">
+              <div class="col">Account Holder Name</div>
+              <div class="col">: {{ customer.accountholdername}}</div>
+            </div>
+            <div class="row">
+              <div class="col">Amount</div>
+              <div class="col">: {{ transaction.inramount }}</div>
+            </div>
+            <div class="row">
+              <div class="col"> Transfer Type Selected</div>
+              <div class="col">: {{transaction.transfertypecode.transfertypedescription}}</div>
+            </div>
+            <div class="row top-buffer">
+              <div class="col">
+                <h2><span> Receiver Details</span></h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">Receiver Account Number</div>
+              <div class="col">: {{transaction.receiveraccountholdernumber}}</div>
+            </div>
+            <div class="row">
+              <div class="col">Receiver Name</div>
+              <div class="col">: {{transaction.receiveraccountholdername }}</div>
+            </div>
+            <div class="row">
+              <div class="col">Receiver Bank BIC</div>
+              <div class="col">: {{transaction.receiverBIC.bic}}</div>
+            </div>
+            <div class="row">
+              <div class="col">Receiver Bank Name</div>
+              <div class="col">: {{transaction.receiverBIC.bankname}}</div>
+            </div>
+
+            <div class="row">
+              <div class="col"> Message Selected</div>
+              <div class="col">: {{transaction.messagecode.instruction}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <div>
+        <button mat-raised-button matStepperPrevious color="primary">Back</button>
+        <button mat-raised-button matStepperNext (click)="makeTransfer()" color="primary">Confirm</button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step label="Acknowledgment">
+
+
+    <div *ngIf="apiResult.success">
+      <div class="alert alert-success" role="alert">
+        <div class="d-inline p-3 align-middle">
+          <mat-icon>sentiment_satisfied_alt</mat-icon>
+        </div>
+        <div class="d-inline p-3 align-middle">
+          Transaction Successful
+        </div>
+      </div>
+      <div>
+        <div class="card border border-primary" style="margin-left:12%; margin-right:12%;">
+          <h5 class="card-header text-center fs-3">Transaction Details</h5>
+          <div class="card-body">
+  
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col"> Transaction Id</div>
+                <div class="col">: {{tresult.transactionid}}</div>
+              </div>
+              <div class="row">
+                <div class="col"> Transfer Date</div>
+                <div class="col">: {{tresult.transferdate}}</div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h2><span> Sender Details</span></h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">Account Number</div>
+                <div class="col">: {{customer.customerid}}</div>
+              </div>
+              <div class="row">
+                <div class="col">Account Holder Name</div>
+                <div class="col">: {{ customer.accountholdername}}</div>
+              </div>
+              <div class="row">
+                <div class="col">Amount</div>
+                <div class="col">: {{ tresult.inramount }}</div>
+              </div>
+              <div class="row">
+                <div class="col"> Transfer Type Selected</div>
+                <div class="col">: {{tresult.transfertypecode.transfertypedescription}}</div>
+              </div>
+              <div class="row top-buffer">
+                <div class="col">
+                  <h2><span> Receiver Details</span></h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">Receiver Account Number</div>
+                <div class="col">: {{tresult.receiveraccountholdernumber}}</div>
+              </div>
+              <div class="row">
+                <div class="col">Receiver Name</div>
+                <div class="col">: {{tresult.receiveraccountholdername }}</div>
+              </div>
+              <div class="row">
+                <div class="col">Receiver Bank BIC</div>
+                <div class="col">: {{tresult.receiverBIC.bic}}</div>
+              </div>
+              <div class="row">
+                <div class="col">Receiver Bank Name</div>
+                <div class="col">: {{tresult.receiverBIC.bankname}}</div>
+              </div>
+  
+              <div class="row">
+                <div class="col"> Message Selected</div>
+                <div class="col">: {{tresult.messagecode.instruction}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <div class="alert alert-danger" role="alert">
+      <div class="d-inline p-3 align-bottom">
+        <mat-icon>sentiment_dissatisfied_alt</mat-icon>
+      </div>
+      <div class="d-inline p-3 align-middle">
+        <span>Transaction Failed</span> <br>
+        <span style="margin-left: 30px;">Reason:</span>
+      </div>
+      
+    </div> -->
+    <div *ngIf="apiResult.error" class="alert alert-danger" role="alert">
+      <div class="row row-cols-auto">
+        <div class="col p-3">
+          <div class="well">
+            <mat-icon>sentiment_dissatisfied_alt</mat-icon>
+            <br>
+          </div>
+        </div>
+        <div class="col p-3 well">
+          <div>Transaction Failed</div> <br>
+          <div>Reason: {{ errordesc }}</div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!apiResult.error && !apiResult.success" class="text-center">
+      <mat-progress-spinner style="margin:40px auto;" mode="indeterminate"></mat-progress-spinner>
+      <p>Transaction is in process...Do not press anything </p>
+    </div>
+    <div *ngIf="apiResult.error || apiResult.success" class="text-center">
+      <button mat-raised-button matStepperPrevious color="primary">Back</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

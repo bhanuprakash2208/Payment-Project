@@ -1,0 +1,26 @@
+.mat-card-header{
+    background-color:#abe8fb!important;
+    padding:5px !important;
+    border-radius:5px 5px 0px 0px;
+    padding-top:20px !important;
+  }
+   .mat-card{
+    padding:0 !important;
+  } 
+  .mat-card-title{
+      color:#004a9f;
+      
+  }
+  .mat-card-content{
+    padding:0px !important;
+  }
+  th{
+    font-size:20px;
+  }
+  tr{
+      font-size: 18px;
+      
+  }
+  tbody{
+      height:45px;
+  }
