@@ -17,9 +17,7 @@
         <mat-icon class="icon">person</mat-icon>
         <span class="label"> {{ name }}</span>
     </a>
-    <button mat-raised-button color="warn">
-        <!-- <mat-icon class="mr">power_settings_new</mat-icon>
-        &nbsp; Logout -->
+    <button mat-raised-button color="warn" (click) = "onLogout()">
         Logout 
     </button>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">

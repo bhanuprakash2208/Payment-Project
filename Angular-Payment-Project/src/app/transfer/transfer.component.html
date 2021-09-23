@@ -90,7 +90,7 @@
     <div class="text-center">
       <button mat-raised-button matStepperNext color="primary">Next</button>
     </div>
-    {{transaction | json}}
+    
   </mat-step>
   <mat-step label="Confirm Details" completed="true">
 
@@ -245,16 +245,6 @@
 
     </div>
 
-    <!-- <div class="alert alert-danger" role="alert">
-      <div class="d-inline p-3 align-bottom">
-        <mat-icon>sentiment_dissatisfied_alt</mat-icon>
-      </div>
-      <div class="d-inline p-3 align-middle">
-        <span>Transaction Failed</span> <br>
-        <span style="margin-left: 30px;">Reason:</span>
-      </div>
-      
-    </div> -->
     <div *ngIf="apiResult.error" class="alert alert-danger" role="alert">
       <div class="row row-cols-auto">
         <div class="col p-3">

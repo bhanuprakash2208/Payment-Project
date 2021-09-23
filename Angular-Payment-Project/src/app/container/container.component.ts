@@ -3,6 +3,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { delay } from 'rxjs/operators';
 import { DataService } from '../services/data.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-container',
@@ -16,7 +17,8 @@ export class ContainerComponent {
 
   name:String;
   constructor(private observer: BreakpointObserver,
-              private dataService:DataService ) {
+              private dataService:DataService,
+              private router: Router ) {
 
                 this.name = this.dataService.customer.accountholdername;
               }
@@ -34,6 +36,12 @@ export class ContainerComponent {
           this.sidenav.open();
         }
       });
+  }
+
+  onLogout(){
+    this.dataService.customer=null;
+    this.dataService.isLoggedIn = false;
+    this.router.navigate(['/login']);
   }
 
 }
