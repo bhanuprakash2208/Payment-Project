@@ -2,17 +2,14 @@ package com.dbs.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-
-import com.dbs.web.service.TransactionService;
 
 
 @SpringBootApplication
-public class PaymentProjectFinalApplication {
+public class SpringPaymentProject {
 
 	public static void main(String[] args) {
-		ApplicationContext context = 
-		SpringApplication.run(PaymentProjectFinalApplication.class, args);
+//		ApplicationContext context = 
+		SpringApplication.run(SpringPaymentProject.class, args);
 		
 		
 		System.out.println("Application Started");
@@ -84,8 +81,8 @@ public class PaymentProjectFinalApplication {
 //			System.out.println(c);
 //		System.out.println();
 		
-		TransactionService ts = context.getBean(TransactionService.class);
-		System.out.println(ts.getTransactionsForCustomerId("83020817828620"));
+//		TransactionService ts = context.getBean(TransactionService.class);
+//		System.out.println(ts.getTransactionsForCustomerId("83020817828620"));
 //		System.out.println("Number of records in Transaction: "+ts.getCount());
 //		System.out.println("Getting Transaction by id: "+ts.getTransactionById(1));
 //		System.out.println();
